@@ -1,0 +1,48 @@
+/* Variables */
+$primaryColor: #039bca;
+$color: #ffffff;
+$margin: 0.8vh;
+$width: 25%;
+$minWidth: 65px;
+$minHeight: 26px;
+$height: 3vw;
+$font: Roboto;
+$fontSize: 12px;
+$weight: 500;
+$radius: 44px;
+$style: italic;
+
+.input-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+input {
+  position: relative;
+  min-width: $minWidth;
+  min-height: $minHeight;
+  line-height: 6ex;
+  width: $width;
+  height: $height;
+  font-family: $font;
+  min-font-size: $fontSize;
+  font-weight: $weight;
+  font-style: $style;
+  margin: $margin;
+  border: 2px solid #757575;
+  border-radius: $radius;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+select:focus {
+  border: 3px solid #039bca;
+}
+
+input:focus {
+  outline: none;
+  border: 3px solid #039bca !important;
+}
+
