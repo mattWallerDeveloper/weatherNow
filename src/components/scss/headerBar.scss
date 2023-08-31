@@ -1,0 +1,38 @@
+/* Variables */
+$primaryColor: #039bca;
+$font: Roboto;
+$fontSize: 50px;
+$minFontSize: 30px;
+$weight: bold;
+$style: italic;
+
+$bp : (
+        mobile : 480px,
+        tablet : 768px,
+        desktop : 1440px,
+);
+
+@mixin query($display){
+  @each $key, $value in $bp{
+
+    //  defining max-width
+    @if ($display == $key){
+      @media (max-width: $value){@content;}
+    }
+  }
+}
+
+.header {
+  font-size: $fontSize;
+  font-weight: $weight;
+  color: $primaryColor;
+  text-align: center;
+  line-height: 2;
+}
+
+// Style rules for mobile display
+@include query (mobile) {
+  .header {
+    font-size: $minFontSize;
+  }
+}

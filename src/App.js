@@ -1,9 +1,15 @@
+import React from 'react';
+import HeaderBar from "./components/HeaderBar";
+import './App.scss';
 
 const App = () => {
   return (
-    <div>
-      Content
-    </div>
+      <React.Fragment>
+          <HeaderBar/>
+          <div className="container">
+
+          </div>
+      </React.Fragment>
   );
 }
 
