@@ -1,5 +1,5 @@
 /* Variables */
-$backGround: #ffffff;
+$backGround: #D3D3D3;
 $font: Roboto;
 $fontSize: 10px;
 $weight: 300;
@@ -18,11 +18,4 @@ $weight: 300;
     font-weight: $weight;
     font-size: $fontSize;
   }
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }

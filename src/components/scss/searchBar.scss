@@ -12,6 +12,28 @@ $weight: 500;
 $radius: 44px;
 $style: italic;
 
+$bp : (
+        mobile : 480px,
+        tablet : 768px,
+        desktop : 1440px,
+);
+
+@mixin query($display){
+  @each $key, $value in $bp{
+
+    //  defining max-width
+    @if ($display == $key){
+      @media (max-width: $value){@content;}
+    }
+  }
+}
+
+
+.inputContainer {
+  text-align: center;
+  line-height: 10;
+}
+
 .input-wrapper {
   width: 100%;
   position: relative;
@@ -21,7 +43,7 @@ input {
   position: relative;
   min-width: $minWidth;
   min-height: $minHeight;
-  line-height: 6ex;
+  line-height: 6;
   width: $width;
   height: $height;
   font-family: $font;
@@ -35,6 +57,19 @@ input {
   text-align: center;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.2);
 
+}
+
+// Style rules for mobile display
+@include query (mobile) {
+  input {
+    width: 90%;
+  }
+}
+
+@include query (tablet) {
+  input {
+    width: 50%;
+  }
 }
 
 select:focus {

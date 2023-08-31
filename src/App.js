@@ -1,16 +1,15 @@
 import React from 'react';
-import HeaderBar from "./components/HeaderBar";
+import HeaderBar from './components/HeaderBar';
 import './App.scss';
-import SearchBar from "./components/SearchBar";
+import SearchBar from './components/SearchBar';
+import CardFlexContainer from './components/CardFlexContainer';
 
 const App = () => {
   return (
       <React.Fragment>
           <HeaderBar/>
           <SearchBar/>
-          <div className="container">
-
-          </div>
+          <CardFlexContainer/>
       </React.Fragment>
   );
 }
