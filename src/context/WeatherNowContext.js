@@ -1,12 +1,17 @@
 import {createContext} from 'react';
-import axios, {create} from 'axios';
+import axios from 'axios';
 
 const WeatherNowContext = createContext();
 
 function WeatherNowProvider ({children}) {
 
-    const valueToShare = {
+    const getLocationLongLat = async (location) => {
+        const response = await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${location}`)
+        console.log(response.data);
+    }
 
+    const valueToShare = {
+        getLocationLongLat: getLocationLongLat
     };
 
     return (
