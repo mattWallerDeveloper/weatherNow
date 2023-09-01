@@ -13,6 +13,7 @@ const SearchBar = () => {
         <div className="inputContainer">
             <div className="input-wrapper">
                 <select id="locations" name="locations" onChange={handleSelect}>
+                    <option key="" value="Please select area" disabled selected hidden>Please select area...</option>
                     {searchedData.map((location, index) =>{
                         return(
                             <option key={index} value={location.name}>{location.name}, {location.country}</option>

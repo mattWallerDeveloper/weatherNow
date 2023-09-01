@@ -7,11 +7,16 @@ const WeatherNowContext = createContext();
 function WeatherNowProvider ({children}) {
     const [searchedData, setSearchedData] = useState([]);
     const [isSelectVisible, setIsSelectVisible] = useState(false);
+    const [isButtonVisible, setIsButtonVisible] = useState(false);
 
     const getSearchedLocation = async (location) => {
         const response = await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${location}`)
-        setSearchedData(response.data.results);
-        response.data.results.length > 1 ? setIsSelectVisible(true) : setIsSelectVisible(false);
+        try {
+            setSearchedData(response.data.results);
+        }
+        catch(err) {
+            alert("Please enter a valid location");
+        }
     }
 
    const getLocation = (searchedValue) => {
@@ -24,8 +29,11 @@ function WeatherNowProvider ({children}) {
         //My preference is to specify both
         getSearchedLocation: getSearchedLocation,
         searchedData: searchedData,
+        setIsSelectVisible: setIsSelectVisible,
         isSelectVisible: isSelectVisible,
-        getLocation: getLocation
+        getLocation: getLocation,
+        setIsButtonVisible: setIsButtonVisible,
+        isButtonVisible: isButtonVisible
     };
 
     return (

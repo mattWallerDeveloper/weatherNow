@@ -4,34 +4,39 @@ import WeatherNowContext from "../hooks/use-weatherNow-context";
 import SearchAdditionalLocations from "./SearchAdditionalLocations";
 
 const SearchBar = () => {
-    const {getSearchedLocation, searchedData, isSelectVisible} = WeatherNowContext();
+    const {getSearchedLocation, setIsSelectVisible, isSelectVisible, setIsButtonVisible, isButtonVisible} = WeatherNowContext();
     const [searchedLocation, setSearchedLocation] = useState('');
 
-
     const handleChange = (event) => {
+        setIsButtonVisible(true);
+        setIsSelectVisible(false);
         setSearchedLocation(event.target.value);
     }
 
     const handleSearch = (event) => {
+        setIsButtonVisible(false);
+        setIsSelectVisible(true);
         event.preventDefault();
         getSearchedLocation(searchedLocation);
     }
-    console.log('searchedData', searchedData);
 
     return (
         <div className="inputContainer">
             <form onSubmit={handleSearch}>
                 <div className="input-wrapper">
                     <input type="text"
+                           required
                            autoComplete="off"
                            name="location"
                            placeholder="Enter a town, city or postcode"
                            onChange={handleChange}
                     />
                 </div>
-                <div className="input-wrapper">
-                    <button>Search</button>
-                </div>
+                {isButtonVisible &&
+                    <div className="input-wrapper">
+                        <button className="buttonOutline">Search</button>
+                    </div>
+                }
             </form>
             {isSelectVisible &&
                 <SearchAdditionalLocations/>
