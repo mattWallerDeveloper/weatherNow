@@ -1,6 +1,7 @@
 import './scss/weatherCard.scss';
 
 const WeatherCard = () => {
+
     return (
         <div className="card">
             <div className="dayDate">Today</div>

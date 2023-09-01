@@ -31,7 +31,6 @@ $bp : (
 
 .inputContainer {
   text-align: center;
-  line-height: 10;
 }
 
 .input-wrapper {
@@ -39,7 +38,7 @@ $bp : (
   position: relative;
 }
 
-input {
+input, select {
   position: relative;
   min-width: $minWidth;
   min-height: $minHeight;
@@ -61,23 +60,18 @@ input {
 
 // Style rules for mobile display
 @include query (mobile) {
-  input {
+  input, select {
     width: 90%;
   }
 }
 
 @include query (tablet) {
-  input {
+  input, select {
     width: 50%;
   }
 }
 
-select:focus {
-  border: 3px solid #039bca;
-}
-
-input:focus {
-  outline: none;
+input:focus , select:focus {
+  outline:none;
   border: 3px solid #039bca !important;
 }
-
