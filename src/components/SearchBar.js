@@ -28,7 +28,7 @@ const SearchBar = () => {
                            required
                            autoComplete="off"
                            name="location"
-                           placeholder="Enter a town, city or postcode"
+                           placeholder="Enter a town or city"
                            onChange={handleChange}
                     />
                 </div>

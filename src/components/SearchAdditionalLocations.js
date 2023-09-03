@@ -3,10 +3,10 @@ import './scss/searchBar.scss';
 import WeatherNowContext from "../hooks/use-weatherNow-context";
 
 const SearchBar = () => {
-    const {getLocation, searchedData} = WeatherNowContext();
+    const {searchedData, getLocationWeather} = WeatherNowContext();
 
       const handleSelect = (selectedLocation) => {
-        getLocation(selectedLocation.target.value);
+        getLocationWeather(selectedLocation.target.value);
     }
 
     return (
@@ -15,8 +15,10 @@ const SearchBar = () => {
                 <select id="locations" name="locations" onChange={handleSelect}>
                     <option key="" value="Please select area" disabled selected hidden>Please select area...</option>
                     {searchedData.map((location, index) =>{
-                        return(
-                            <option key={index} value={location.name}>{location.name}, {location.country}</option>
+                       return(
+                            <option key={index} value={location.id}>
+                                {location.name}, {location.country}
+                            </option>
                         )
                     })}
                 </select>

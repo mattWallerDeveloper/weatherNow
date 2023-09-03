@@ -7,11 +7,9 @@ import CardFlexContainer from './components/CardFlexContainer';
 const App = () => {
   return (
       <React.Fragment>
-          <div className="base64">
-              <HeaderBar/>
-              <SearchBar/>
-              <CardFlexContainer/>
-          </div>
+          <HeaderBar/>
+          <SearchBar/>
+          <CardFlexContainer/>
       </React.Fragment>
   );
 }

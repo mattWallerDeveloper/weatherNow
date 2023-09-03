@@ -1,20 +1,24 @@
 import './scss/weatherCard.scss';
+import WeatherDescHelper from "./helpers/WeatherDescHelper";
 
-const WeatherCard = () => {
+const WeatherCard = (props) => {
+    const {key, time, temp, code, speed} = props;
 
     return (
-        <div className="card">
-            <div className="dayDate">Today</div>
+        <div className="card" key={key}>
+            <div className="dayDate">{time}</div>
             <div className="cardImg">
-                image
+                {code}
             </div>
             <div className="descriptionContainer">
-                <div className="description">Light Rain Showers</div>
-                <div className="description">3deg</div>
-                <div className="description">15 knots</div>
+                <div className="description">
+                    <WeatherDescHelper code={code}/>
+                </div>
+                <div className="description">{temp}</div>
+                <div className="description">{speed}</div>
             </div>
         </div>
-    );
+    )
 }
 
 export default WeatherCard;

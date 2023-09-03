@@ -8,6 +8,8 @@ function WeatherNowProvider ({children}) {
     const [searchedData, setSearchedData] = useState([]);
     const [isSelectVisible, setIsSelectVisible] = useState(false);
     const [isButtonVisible, setIsButtonVisible] = useState(false);
+    const [mapData, setMapData] = useState([]);
+    const [forecastData, setForecastData] = useState([]);
 
     const getSearchedLocation = async (location) => {
         const response = await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${location}`)
@@ -19,8 +21,22 @@ function WeatherNowProvider ({children}) {
         }
     }
 
-   const getLocation = (searchedValue) => {
-       console.log('selected location', searchedValue)
+   const getLocationWeather = async (searchedDataID) => {
+       const data = searchedData.filter((location) => {
+           return location.id == searchedDataID;
+       });
+
+       const latitude = data.map((location) => {
+           return location.latitude;
+       });
+
+       const longitude = data.map((location) => {
+           return location.longitude;
+       });
+
+       const response = await axios.get(`https://api.open-meteo.com/v1/forecast?&latitude=${latitude[0]}&longitude=${longitude[0]}&daily=weathercode,temperature_2m_max,windspeed_10m_max&timezone=Europe%2FLondon&forecast_days=5`)
+       setMapData(response.data.daily.time);
+       setForecastData(response.data.daily);
     }
 
     const valueToShare = {
@@ -31,9 +47,11 @@ function WeatherNowProvider ({children}) {
         searchedData: searchedData,
         setIsSelectVisible: setIsSelectVisible,
         isSelectVisible: isSelectVisible,
-        getLocation: getLocation,
         setIsButtonVisible: setIsButtonVisible,
-        isButtonVisible: isButtonVisible
+        isButtonVisible: isButtonVisible,
+        getLocationWeather: getLocationWeather,
+        mapData: mapData,
+        forecastData: forecastData
     };
 
     return (
