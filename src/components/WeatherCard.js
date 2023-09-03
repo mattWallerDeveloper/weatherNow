@@ -17,8 +17,9 @@ const WeatherCard = (props) => {
                 <div className="description">
                     <WeatherDescHelper code={code}/>
                 </div>
-                <div className="description">{temp}{units.temperature_2m_max}</div>
-                <div className="description">{speed}{units.windspeed_10m_max}</div>
+                <br/>
+                <div className="description">Temperature:&nbsp;{temp}{units.temperature_2m_max}</div>
+                <div className="description">Wind Speed:&nbsp;{speed}{units.windspeed_10m_max}</div>
             </div>
         </div>
     )
