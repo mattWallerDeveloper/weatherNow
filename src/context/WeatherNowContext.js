@@ -10,6 +10,7 @@ function WeatherNowProvider ({children}) {
     const [isButtonVisible, setIsButtonVisible] = useState(false);
     const [mapData, setMapData] = useState([]);
     const [forecastData, setForecastData] = useState([]);
+    const [units, setUnits] = useState([]);
 
     const getSearchedLocation = async (location) => {
         const response = await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${location}`)
@@ -37,12 +38,10 @@ function WeatherNowProvider ({children}) {
        const response = await axios.get(`https://api.open-meteo.com/v1/forecast?&latitude=${latitude[0]}&longitude=${longitude[0]}&daily=weathercode,temperature_2m_max,windspeed_10m_max&timezone=Europe%2FLondon&forecast_days=5`)
        setMapData(response.data.daily.time);
        setForecastData(response.data.daily);
+       setUnits(response.data.daily_units);
     }
 
     const valueToShare = {
-        //I'm aware that if the Key and Value naming match I only need to reference once
-        //For example, instead of 'getLocationLongLat: getLocationLongLat', 'getLocationLongLat' is sufficient
-        //My preference is to specify both
         getSearchedLocation: getSearchedLocation,
         searchedData: searchedData,
         setIsSelectVisible: setIsSelectVisible,
@@ -51,7 +50,8 @@ function WeatherNowProvider ({children}) {
         isButtonVisible: isButtonVisible,
         getLocationWeather: getLocationWeather,
         mapData: mapData,
-        forecastData: forecastData
+        forecastData: forecastData,
+        units: units
     };
 
     return (
