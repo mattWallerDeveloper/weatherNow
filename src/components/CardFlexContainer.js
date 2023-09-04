@@ -7,8 +7,6 @@ const CardFlexContainer = () => {
     const {mapData, forecastData} = WeatherNowContext();
     const {temperature_2m_max,weathercode,windspeed_10m_max, time} = forecastData;
 
-    console.log(forecastData)
-
     return (
         <React.Fragment>
             <section className="main-section">
@@ -16,7 +14,10 @@ const CardFlexContainer = () => {
                     const temp = temperature_2m_max[index];
                     const code = weathercode[index];
                     const speed = windspeed_10m_max[index];
-                    const date = time[index]
+                    const datePreConvert = time[index]
+                    const dateConvert = new Date( datePreConvert *1000);
+                    const date = dateConvert.toDateString();
+
                     return(
                         <WeatherCard
                             key={index}

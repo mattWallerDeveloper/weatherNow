@@ -35,10 +35,15 @@ function WeatherNowProvider ({children}) {
            return location.longitude;
        });
 
-       const response = await axios.get(`https://api.open-meteo.com/v1/forecast?&latitude=${latitude[0]}&longitude=${longitude[0]}&daily=weathercode,temperature_2m_max,windspeed_10m_max&timezone=Europe%2FLondon&forecast_days=5`)
-       setMapData(response.data.daily.time);
-       setForecastData(response.data.daily);
-       setUnits(response.data.daily_units);
+       const response = await axios.get(`https://api.open-meteo.com/v1/forecast?&latitude=${latitude[0]}&longitude=${longitude[0]}&daily=weathercode,temperature_2m_max,windspeed_10m_max&timeformat=unixtime&timezone=Europe%2FLondon&forecast_days=5`)
+       try {
+           setMapData(response.data.daily.time);
+           setForecastData(response.data.daily);
+           setUnits(response.data.daily_units);
+       }
+       catch(err) {
+           alert("Location not found");
+       }
     }
 
     const valueToShare = {
