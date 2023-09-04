@@ -14,9 +14,9 @@ const CardFlexContainer = () => {
                     const temp = temperature_2m_max[index];
                     const code = weathercode[index];
                     const speed = windspeed_10m_max[index];
-                    const datePreConvert = time[index]
-                    const dateConvert = new Date( datePreConvert *1000);
-                    const date = dateConvert.toDateString();
+                    const timeStamp = time[index]
+                    const dateConvert = new Date( timeStamp *1000);
+                    const date = dateConvert.toGMTString().split(' ').slice(0, 4).join(' ');
 
                     return(
                         <WeatherCard

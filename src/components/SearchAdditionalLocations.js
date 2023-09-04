@@ -15,7 +15,6 @@ const SearchBar = () => {
                 <select id="locations" name="locations" onChange={handleSelect}>
                     <option key="" value="Please select area" disabled selected hidden>Please select area...</option>
                     {searchedData.map((location, index) =>{
-                        console.log(location)
                        return(
                             <option key={index} value={location.id}>
                                 {location.name}, {location.admin1}, {location.country_code}

@@ -25,6 +25,7 @@ const SearchBar = () => {
             <form onSubmit={handleSearch}>
                 <div className="input-wrapper">
                     <input type="text"
+                           pattern=".{2,}"
                            required
                            autoComplete="off"
                            name="location"
